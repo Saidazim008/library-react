@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+.banner-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.banner-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Rasm ustidagi asosiy konteyner */
+.banner-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    /* 1. O'rtadan emas, aynan ENG PASTDAN tekislaymiz */
+    align-items: flex-end;
+
+    /* 2. Yonlardan 5% va pastdan rasmga yopishib qolmasligi uchun joy tashlaymiz */
+    padding: 0 5% 40px 5%;
+}
+
+/* Chap tomondagi matnlar */
+.left-sida {
+    max-width: 60%;
+    color: #ffffff;
+}
+
+.banner-title {
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.banner-text {
+    font-size: 1.1rem;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+/* O'ng tomondagi tugmalar */
+.right-side {
+    display: flex;
+    align-items: flex-end;
+    /* Tugma pastki chiziq bilan tekis turishi uchun */
+}
+
+.banner-btn {
+    padding: 12px 24px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #ffffff;
+    background: transparent;
+    border: 2px solid #ffffff;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    /* Tugma matni tor ekranda ham sinib ketmaydi */
+}
+
+.banner-btn.filled {
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+.banner-btn:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+
+/* --- 📱 JIGAR, MANA BU YER RESPONSIV QISMI (CHINGIZXON VARIANTI) --- */
+
+/* 1. Planshetlar va o'rtacha ekranlar uchun (Masofalar qisiladi, lekin tartib buzilmaydi) */
+@media (max-width: 1024px) {
+    .banner-title {
+        font-size: 2.3rem;
+        /* Sarlavha biroz kichrayadi, matn rasm chetiga urilmaydi */
+    }
+
+    .banner-text {
+        font-size: 1rem;
+    }
+
+    .left-sida {
+        max-width: 65%;
+        /* Matnga ko'proq joy ochamiz */
+    }
+}
+
+/* 2. Mobil telefonlar uchun variant */
+@media (max-width: 768px) {
+
+    /* Konteyner balandligi auto bo'lgani uchun, rasm kichrayganda matnlar 
+       tashqariga chiqib ketmasligi uchun jipslashtiramiz */
+    .banner-content {
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+        /* Chap tomonga tekislansa, Mbappening yuzi yopilib qolmaydi, chekkada chiroyli turadi */
+        text-align: left;
+        /* Matnlar chapdan tartiblanadi */
+        gap: 15px;
+        /* Matn va tugma orasi o'ta ideal masofada qoladi */
+        padding: 0 25px 25px 25px;
+        /* Mobilda chekka paddinglarni ixchamlashtirdik */
+    }
+
+    /* .left-side yozgansiz pastda, HTML da .left-sida ekan, shuni to'g'irlab ketdim */
+    .left-sida {
+        max-width: 100%;
+        /* Telefon ekranida matn to'liq enini oladi */
+    }
+
+    .banner-title {
+        font-size: 1.8rem;
+        margin-bottom: 8px;
+    }
+
+    .banner-text {
+        font-size: 0.9rem;
+    }
+
+    .right-side {
+        width: 100%;
+        /* Tugma konteyneri to'liq kenglikni oladi */
+        display: flex;
+        justify-content: flex-start;
+        /* Tugma chap chekkadan chiroyli joylashadi */
+    }
+
+    .banner-btn {
+        padding: 10px 22px;
+        font-size: 0.8rem;
+    }
+}
+
+/* 3. Judayam kichik (eski) telefon ekranlari uchun */
+@media (max-width: 414px) {
+    .banner-content {
+        padding: 0 15px 15px 15px;
+        /* Eng minimal masofa */
+    }
+
+    .banner-title {
+        font-size: 1.5rem;
+    }
+
+    .banner-text {
+        font-size: 0.85rem;
+    }
+}

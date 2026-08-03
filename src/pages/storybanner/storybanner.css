@@ -1,0 +1,259 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.story-banner-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #000;
+}
+
+/* --- ORQA FONDAGI YOUTUBE IFRAME SOZLAMALARI --- */
+.story-video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.story-iframe-element {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 56.25vw;
+    min-height: 100vh;
+    min-width: 177.77vh;
+    transform: translate(-50%, -50%) scale(1.3);
+
+    /* Videolar sakrab qolmasdan chiroyli va yumshoq erishi (cross-fade) uchun */
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 1.2s ease-in-out;
+}
+
+/* Faol video eng yuqoriga chiqadi va oqib keladi */
+.story-iframe-element.is-visible {
+    opacity: 1;
+    z-index: 2;
+}
+
+/* --- TEPADAGI 4 TA NAVBATMA-NAVBAT TO'LUVCHI CHIZIQ --- */
+.story-tabs-wrapper {
+    position: absolute;
+    top: 40px;
+    left: 5%;
+    right: 5%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    z-index: 10;
+}
+
+.story-tab-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.story-tab-title {
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    opacity: 0.4;
+    transition: opacity 0.3s ease;
+    text-transform: uppercase;
+}
+
+.story-tab-item.active .story-tab-title,
+.story-tab-item:hover .story-tab-title {
+    opacity: 1;
+}
+
+.story-progress-bg {
+    width: 100%;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.25);
+    position: relative;
+    border-radius: 2px;
+}
+
+.story-progress-fill {
+    height: 100%;
+    background-color: #ffffff;
+    width: 0%;
+    border-radius: 2px;
+    transition: width 0.05s linear;
+}
+
+/* --- ASOSIY MATNLAR MATRIXI --- */
+.story-content-layer {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 5% 50px 5%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.2) 40%, transparent 80%);
+    gap: 35px;
+}
+
+.story-left-block {
+    max-width: 50%;
+}
+
+.story-main-heading {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1.1;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+}
+
+.story-description {
+    font-size: 1.1rem;
+    color: #ffffff;
+    opacity: 0.9;
+    margin-bottom: 25px;
+}
+
+.story-discover-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 30px;
+    background: transparent;
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.story-discover-btn:hover {
+    background-color: #ffffff;
+    color: #000000;
+    transform: translateY(-2px);
+}
+
+.arrow-icon {
+    font-size: 1.1rem;
+}
+
+/* --- PASDAGI MAHSULOT KARTALARI --- */
+.story-bottom-products {
+    display: flex;
+    gap: 15px;
+}
+
+.product-mini-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 22px 8px 8px;
+    border-radius: 50px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s;
+}
+
+.product-mini-card:hover {
+    transform: translateY(-4px);
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+.product-mini-card img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.card-info h4 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.card-info p {
+    font-size: 0.75rem;
+    opacity: 0.8;
+    margin-top: 2px;
+}
+
+/* --- RESPONSIV DIZAYN --- */
+@media (max-width: 1024px) {
+    .story-main-heading {
+        font-size: 2.6rem;
+    }
+
+    .story-left-block {
+        max-width: 75%;
+    }
+}
+
+@media (max-width: 768px) {
+    .story-tabs-wrapper {
+        top: 25px;
+        gap: 10px;
+    }
+
+    .story-tab-title {
+        font-size: 0.6rem;
+    }
+
+    .story-content-layer {
+        padding: 0 25px 30px 25px;
+        gap: 25px;
+    }
+
+    .story-left-block {
+        max-width: 100%;
+    }
+
+    .story-main-heading {
+        font-size: 2rem;
+    }
+
+    .story-bottom-products {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .product-mini-card {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .story-tab-title {
+        display: none;
+    }
+
+    .story-tabs-wrapper {
+        top: 20px;
+        gap: 6px;
+    }
+}

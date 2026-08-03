@@ -1,0 +1,255 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.prizm-banner-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #000;
+}
+
+/* IFRAME REKLAMA FONI (VIDEOGA TEGILMADI, ORQADA TURADI) */
+.prizm-video-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.prizm-video-wrapper iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 56.25vw;
+    min-height: 100vh;
+    min-width: 177.77vh;
+    transform: translate(-50%, -50%);
+    will-change: transform;
+}
+
+/* KO'ZOYNAK LINZASI KONTURI SHAKLI */
+.prizm-lens-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lens-outline-shape {
+    width: 92%;
+    height: 85%;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    clip-path: polygon(0% 15%, 25% 0%, 50% 8%, 75% 0%, 100% 15%,
+            95% 65%, 70% 80%, 50% 30%, 30% 80%, 5% 65%);
+    background: transparent;
+}
+
+/* DISCOVER PRIZM MATNI */
+.prizm-header-title {
+    position: absolute;
+    top: 12%;
+    width: 100%;
+    text-align: center;
+    color: #ffffff;
+    font-size: 4rem;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    z-index: 5;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+/* SHOP NOW / DISCOVER TUGMALARI */
+.prizm-center-buttons {
+    position: absolute;
+    bottom: 22%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    z-index: 5;
+}
+
+.btn-prizm-shop,
+.btn-prizm-discover {
+    padding: 13px 35px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+}
+
+.btn-prizm-shop {
+    background-color: #172437;
+    border: none;
+    color: #ffffff;
+}
+
+.btn-prizm-shop:hover {
+    background-color: #ffffff;
+    color: #000;
+}
+
+.btn-prizm-discover {
+    background-color: transparent;
+    border: 2px solid #ffffff;
+    color: #ffffff;
+}
+
+.btn-prizm-discover:hover {
+    background-color: #ffffff;
+    color: #000;
+}
+
+
+/* --- 📌 PASTKI PANELDAGI QORA SHAFFOF CHIZIQ (Z-INDEX TO'G'RILANDI) --- */
+.prizm-footer-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    z-index: 10;
+}
+
+/* CHAP TOMON: TICKA HELP TUGMASI */
+.prizm-help-section {
+    display: flex;
+    align-items: center;
+    transform: rotate(-90deg) translate(-10px, -15px);
+    transform-origin: left center;
+}
+
+.prizm-help-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #000000;
+    padding: 5px 10px;
+    border-left: 2px solid #ffffff;
+}
+
+.badge-text {
+    color: #ffffff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+
+/* --- 🎯 JIGAR, ROAD, EVERYDAY, FIELD ENDI MUTLOQ O'RTADA --- */
+.prizm-tabs-group {
+    display: flex;
+    gap: 50px;
+    height: 100%;
+    align-items: center;
+    position: absolute;
+    /* Panelni o'rtaga mixlash uchun absolute qildik */
+    left: 50%;
+    transform: translateX(-50%);
+    /* Sehrli kod - panelni tarozi pallasidek teng o'rtaga qo'yadi */
+}
+
+.prizm-tab-item {
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.tab-item-text {
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+}
+
+.prizm-tab-item.is-active .tab-item-text,
+.prizm-tab-item:hover .tab-item-text {
+    opacity: 1;
+}
+
+/* Aktiv bo'lim tagidagi silliq oq chiziq */
+.prizm-tab-item.is-active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #ffffff;
+}
+
+
+/* O'NG TOMONDAGI PAUZA AYLONASI (Joyi o'ng chekkada qoldi) */
+.prizm-action-media {
+    margin-left: auto;
+    /* O'ng burchakka qisib turishi uchun */
+}
+
+.outer-media-circle {
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.inner-media-circle {
+    width: 24px;
+    height: 24px;
+    background: #111111;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* --- 📱 RESPONSIV MOSLAMALARI (HAMMA EKRAN UCHUN INTEGRATSIYA) --- */
+@media (max-width: 768px) {
+    .prizm-header-title {
+        font-size: 2.3rem;
+    }
+
+    .prizm-tabs-group {
+        gap: 25px;
+        /* Mobilda yozuvlar siqilib qolmasligi uchun masofa ozgina qisqaradi */
+    }
+
+    .tab-item-text {
+        font-size: 0.75rem;
+    }
+
+    .prizm-footer-bar {
+        padding: 0 15px;
+    }
+}

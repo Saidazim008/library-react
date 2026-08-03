@@ -1,0 +1,104 @@
+/* Home.css */
+
+/* Video joylashgan blok - BUTUN EKRAN EMAS, balandligi chegaralangan katta blok */
+.video-block-container {
+    position: relative;
+    width: 100%;
+    height: 650px;
+    /* SHU ERDAN videoni balandligini o'zingizga moslab yana kattartirishingiz mumkin */
+    background-color: #000000;
+    overflow: hidden;
+}
+
+/* Videoni o'zi shu blok ichini to'liq qoplaydi */
+.background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Video cho'zilib yoki shakli buzilib ketmasligi uchun */
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    /* Ustidan bosib bo'lmaydi, ovoz yoqilmaydi */
+    z-index: 1;
+}
+
+/* Videoning ustidagi qora soya (yozuvlar oq bo'lgani uchun aniq ko'rinishi uchun) */
+.video-shadow-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    /* Silliq qoraytirish */
+    z-index: 2;
+}
+
+/* Video ichidagi matn va tugmalar joylashuvi */
+.video-text-content {
+    position: absolute;
+    bottom: 60px;
+    /* Pastdan biroz tepada */
+    left: 0;
+    width: 100%;
+    z-index: 5;
+    text-align: center;
+    color: #ffffff;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.video-main-title {
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+}
+
+.video-description {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 30px;
+    opacity: 0.9;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+}
+
+/* Tugmalar dizayni */
+.hero-btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.hero-custom-btn {
+    padding: 14px 36px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.2s ease;
+}
+
+.hero-btn-white {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.hero-btn-trans {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.hero-custom-btn:hover {
+    transform: scale(1.03);
+    /* Sichqoncha borganda sal kattalashadi */
+}

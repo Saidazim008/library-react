@@ -1,0 +1,207 @@
+/* ASOSIY FOOTER/SERVICES BLOKI */
+.oakley-services-section {
+    width: 100%;
+    background-color: #050505;
+    /* Original qora fon */
+    padding: 0;
+    /* Bo'shliq kartaning o'zidan chiqadi */
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* SLIDERNING ASOSIY IDISHI */
+.services-slider-container {
+    max-width: 100%;
+    /* Ekran bo'ylab to'liq yoyilishi uchun */
+    position: relative;
+    padding: 0 80px;
+    /* Strelkalar siqilib qolmasligi uchun */
+    box-sizing: border-box;
+}
+
+/* KARTALAR SILLIQ SILJIYDIGAN VISUAL OYNA */
+.services-track-viewport {
+    width: 100%;
+    overflow: hidden;
+}
+
+/* KARTALAR QATORI */
+.services-slider-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    /* Silliq kiber-siljish */
+    width: 100%;
+}
+
+/* HAR BIR KARTANING ENI (3TA KARTA 100% NI TENG BO'LADI) */
+.service-card-item {
+    flex: 0 0 33.333%;
+    box-sizing: border-box;
+}
+
+/* 🎯 ALOHIDA BOTTIQ QUTILAR EMAS, CHEKSIZ PANEL DIZAYNI */
+.card-inner-content {
+    /* Original rasmdagi o'sha pastdan yuqoriga ochiladigan issiq oltinsimon/jigarrang gradient */
+    background: linear-gradient(180deg, rgba(26, 21, 18, 0.25) 0%, rgba(5, 5, 5, 0.95) 100%);
+
+    /* To'rtburchak borderlar o'rniga faqat nozik ajratuvchi chiziqlar */
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+
+    height: 380px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Ikonka tepada, matnlar eng pastda turishi uchun */
+    padding: 40px 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+/* Karta ustiga sichqoncha borgandagi miltillash effekti */
+.card-inner-content:hover {
+    background: linear-gradient(180deg, rgba(38, 30, 25, 0.35) 0%, rgba(0, 0, 0, 1) 100%);
+}
+
+/* 🎯 IKONKA - MUTLOQ O'NG BURCHAKDA */
+.service-card-icon-right,
+.service-card-icon-top {
+    /* Sening kodingdagi eski klass nomi ham ishlayverishi uchun */
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    /* Elementni o'ngga suradi */
+    color: #ffffff;
+    opacity: 0.9;
+    margin-bottom: 0;
+    /* Eski margin olib tashlandi */
+}
+
+/* 🎯 SARLAVHA VA MATN - PASTKI QISMDAN ORIN OLDI */
+.service-card-info-bottom,
+.service-card-info-center {
+    /* Har ikki klass nomiga moslashuvchan */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.service-card-info-bottom h3,
+.service-card-info-center h3 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 900;
+    letter-spacing: 0.8px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    line-height: 1.2;
+    max-width: 290px;
+}
+
+.service-card-info-bottom p,
+.service-card-info-center p {
+    color: #b3b3b3;
+    font-size: 0.88rem;
+    line-height: 1.45;
+    font-weight: 400;
+    max-width: 270px;
+}
+
+/* 🎯 IKKI CHETDAGI PREMIUM STRELKALAR (SHAFFOF TO'Q RANGLI) */
+.main-slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    background-color: rgba(255, 255, 255, 0.1);
+    /* Shaffof oqish oyna effekti */
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 30;
+    backdrop-filter: blur(4px);
+    /* Orqa fonni xira qiladi */
+    transition: all 0.2s ease;
+}
+
+.main-slider-arrow:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-50%) scale(1.05);
+}
+
+/* Strelkalarni konteyner ichiga chiroyli joylashtirish */
+.left-arrow {
+    left: 20px;
+}
+
+.right-arrow {
+    right: 20px;
+}
+
+
+/* --- 📱 RESPONSIV MOSLAMALAR --- */
+
+@media (max-width: 1200px) {
+    .services-slider-container {
+        padding: 0 60px;
+    }
+
+    .left-arrow {
+        left: 15px;
+    }
+
+    .right-arrow {
+        right: 15px;
+    }
+}
+
+@media (max-width: 992px) {
+    .service-card-item {
+        flex: 0 0 50%;
+    }
+
+    /* 2 tadan karta */
+    .services-slider-container {
+        padding: 0 50px;
+    }
+
+    .left-arrow {
+        left: 8px;
+    }
+
+    .right-arrow {
+        right: 8px;
+    }
+}
+
+@media (max-width: 650px) {
+    .service-card-item {
+        flex: 0 0 100%;
+    }
+
+    /* 1 tadan karta */
+    .services-slider-container {
+        padding: 0 40px;
+    }
+
+    .left-arrow {
+        left: 2px;
+    }
+
+    .right-arrow {
+        right: 2px;
+    }
+
+    .card-inner-content {
+        height: 340px;
+        padding: 30px 20px;
+    }
+}

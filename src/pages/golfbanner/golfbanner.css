@@ -1,0 +1,167 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- ASOSIY BANNER KONTEYNERI --- */
+.golf-banner-container {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Ekran bo'yi bilan teng o'lcham */
+    overflow: hidden;
+    background-color: #000;
+    display: flex;
+    align-items: flex-end; /* Kontentni eng pastki chiziqqa tortadi */
+}
+
+/* --- IFRAME VIDEONI TO'LIQ FONGA YOYISH (BACKGROUND LOOP) --- */
+.golf-video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none; /* Sichqoncha videoni bosib qo'ymasligi uchun */
+}
+
+.golf-video-background iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 56.25vw; /* 16:9 proporsiya */
+    min-height: 100vh;
+    min-width: 177.77vh; /* 16:9 proporsiya */
+    transform: translate(-50%, -50%) scale(1.15); /* Qora chiziqlar ko'rinmasligi uchun ozgina kattalashtiramiz */
+    object-fit: cover;
+}
+
+/* --- KONTENTLAR USTKI QATLAMI --- */
+.golf-banner-content {
+    position: relative;
+    z-index: 2; /* Videodan tepada turishi shart */
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /* Matnlar chapda, tugmalar o'ngda */
+    align-items: flex-end;
+    padding: 0 5% 60px 5%; /* Yonlardan va pastdan chiroyli masofalar */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.4) 0%, transparent 50%); /* Matnlar oson o'qilishi uchun ostidan soya */
+    gap: 40px;
+}
+
+/* --- CHAP TOMONDAGI MATNLAR --- */
+.golf-left-section {
+    max-width: 60%;
+}
+
+.golf-title {
+    font-size: 3.8rem;
+    font-weight: 900;
+    color: #ffffff;
+    text-transform: uppercase;
+    line-height: 1.05;
+    letter-spacing: 0.5px;
+    margin-bottom: 15px;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.golf-subtitle {
+    font-size: 1.15rem;
+    color: #ffffff;
+    opacity: 0.95;
+    font-weight: 400;
+    line-height: 1.4;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* --- O'NG TOMONDAGI TUGMALAR --- */
+.golf-right-section {
+    display: flex;
+    flex-direction: column; /* Tugmalarni ustma-ust taxlaydi */
+    gap: 12px; /* Tugmalar orasi */
+    align-items: flex-end;
+}
+
+.golf-btn {
+    padding: 14px 30px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #ffffff;
+    background: transparent;
+    border: 2px solid #ffffff;
+    border-radius: 50px; /* To'liq dumaloq chekkalar */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap; /* Matn tor ekranda ham sinib ketmaydi */
+}
+
+/* Tugma ustiga sichqoncha kelgandagi effekt */
+.golf-btn:hover {
+    background-color: #ffffff;
+    color: #000000;
+    transform: translateY(-2px);
+}
+
+
+/* --- 📱 ULTRA RESPONSIV DIZAYN (MEDIA QUERIES) --- */
+
+/* Planshetlar va o'rtacha o'lchamdagi ekranlar */
+@media (max-width: 1200px) {
+    .golf-title {
+        font-size: 3rem;
+    }
+    .golf-left-section {
+        max-width: 55%;
+    }
+}
+
+/* Vertikal planshetlar va katta telefonlar (Dizayn buzilmasdan tartibga keladi) */
+@media (max-width: 768px) {
+    .golf-banner-content {
+        flex-direction: column; /* Elementlar ustma-ust joylashadi */
+        align-items: flex-start; /* Hammasi chap chekkadan tekislanadi */
+        justify-content: flex-end;
+        padding: 0 30px 40px 30px;
+        gap: 25px;
+    }
+
+    .golf-left-section {
+        max-width: 100%; /* Matn blok enini to'liq oladi */
+    }
+
+    .golf-title {
+        font-size: 2.2rem;
+    }
+
+    .golf-subtitle {
+        font-size: 1rem;
+    }
+
+    .golf-right-section {
+        width: 100%; /* Tugmalar bloki eniga cho'ziladi */
+        align-items: flex-start; /* Tugmalar ham chapga tekislanadi */
+    }
+
+    .golf-btn {
+        width: 100%; /* Telefonlarda bosish qulay bo'lishi uchun tugmalar 100% enini egallaydi */
+        text-align: center;
+        padding: 12px 20px;
+    }
+}
+
+/* Kichik smartfonlar uchun */
+@media (max-width: 480px) {
+    .golf-banner-content {
+        padding: 0 20px 30px 20px;
+    }
+    .golf-title {
+        font-size: 1.8rem;
+    }
+    .golf-subtitle {
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,257 @@
+/* --- 1. ASOSIY BO'LIM VA QIMIRLOVCHI FON LOGIKASI --- */
+.sport-section-container {
+    position: relative;
+    width: 100%;
+    min-height: 550px;
+    background-color: #0c1017;
+    padding: 140px 0 60px 0;
+    font-family: system-ui, -apple-system, sans-serif;
+    overflow: hidden;
+    box-sizing: border-box;
+    z-index: 1;
+    transform: translate3d(0, 0, 0);
+    /* GPU quvvatini faollashtirish */
+}
+
+/* Orqa fondagi jilolanuvchi "Heatmap" qatlami */
+.sport-section-container::before {
+    content: '';
+    position: absolute;
+    top: -60%;
+    left: -60%;
+    width: 220%;
+    height: 220%;
+    z-index: -1;
+    background: radial-gradient(circle at 30% 30%, #4a2112 0%, transparent 40%),
+        radial-gradient(circle at 70% 30%, #142847 0%, transparent 45%),
+        radial-gradient(circle at 50% 70%, #3d1710 0%, transparent 40%);
+    filter: blur(85px);
+    opacity: 0.85;
+    animation: realHeatmapMoving 20s ease-in-out infinite alternate;
+    will-change: transform;
+}
+
+/* Fon silliq to'lqinlanishi uchun koordinatalar */
+@keyframes realHeatmapMoving {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+
+    50% {
+        transform: translate(4%, 3%) rotate(5deg) scale(1.06);
+    }
+
+    100% {
+        transform: translate(-3%, -4%) rotate(-4deg) scale(0.96);
+    }
+}
+
+/* --- 2. SARLAVHA QISMI --- */
+.sport-top-header {
+    position: absolute;
+    top: 40px;
+    left: 50px;
+    right: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+.sport-main-title {
+    font-size: 4.5rem;
+    font-family: 'Georgia', serif;
+    color: #ffffff;
+    font-weight: 400;
+    margin: 0;
+    line-height: 1;
+}
+
+.sport-pause-icon {
+    color: #ffffff;
+    opacity: 0.4;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* --- 3. GRID SYSTEM --- */
+.sport-grid-container {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Kompyuterda parallel 2 ta ustun */
+    width: 100%;
+    z-index: 5;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sport-grid-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 45px 50px 45px 60px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sport-grid-container .sport-grid-item:nth-child(odd) {
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sport-grid-item.is-active {
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.sport-item-text-group {
+    display: flex;
+    align-items: center;
+}
+
+.sport-item-name {
+    font-size: 2.1rem;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sport-grid-item.is-active .sport-item-name {
+    transform: translateX(10px);
+}
+
+/* --- 4. RASM VA STRELKA (DOIMO ENG O'NG CHЕKKADA TEKIS TURADI) --- */
+.sport-item-action-wrapper {
+    position: absolute;
+    right: 50px;
+    /* Ikkala ustundagi hamma slaydlarni bir xil o'ng chekkaga tekislaydi */
+    top: 50%;
+    transform: translateY(-50%) scale(0.95);
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    /* Rasm va o'ngdagi strelka orasi */
+    pointer-events: none;
+    z-index: 20;
+
+    /* Cursor ketganda silliq (0.3s) erib yo'qolish logikasi */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
+}
+
+/* Sichqoncha kelganda silliq paydo bo'lishi */
+.sport-grid-item.is-active .sport-item-action-wrapper {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) scale(1);
+}
+
+/* Rasm konteyneri va siz so'ragan chiroyli Border Radius */
+.sport-image-popup-container {
+    width: 240px;
+    height: 140px;
+    border-radius: 14px;
+    /* Zamonaviy yumaloq burchaklar */
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+.sport-popup-actual-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Eng chekkadagi strelka */
+.sport-popup-arrow-icon {
+    color: #ffffff;
+    opacity: 0.8;
+    transform: translateX(-5px);
+    transition: transform 0.3s ease;
+}
+
+.sport-grid-item.is-active .sport-popup-arrow-icon {
+    transform: translateX(0);
+}
+
+
+/* --- 5. LORSA-LOR RESPONSIV DIZAYN (MEDIA QUERIES) --- */
+
+/* Planshetlar va kichikroq noutbuk ekranlari uchun */
+@media (max-width: 1200px) {
+    .sport-grid-item {
+        padding: 40px 35px 40px 40px;
+    }
+
+    .sport-image-popup-container {
+        width: 180px;
+        /* Ekran torayganda rasmlar sig'ishi uchun mutanosib kichrayadi */
+        height: 110px;
+    }
+
+    .sport-item-name {
+        font-size: 1.7rem;
+    }
+}
+
+/* Katta telefonlar va planshetlar uchun (Ekran bitta ustunga aylanadi) */
+@media (max-width: 992px) {
+    .sport-grid-container {
+        grid-template-columns: 1fr;
+        /* 1 ta ustunli vertikal dizayn */
+    }
+
+    .sport-grid-container .sport-grid-item:nth-child(odd) {
+        border-right: none;
+        /* Vertikal o'rtadagi chiziq yo'qoladi */
+    }
+
+    .sport-top-header {
+        left: 25px;
+        right: 25px;
+    }
+
+    .sport-main-title {
+        font-size: 3.5rem;
+    }
+}
+
+/* Kichik smartfonlar uchun (Ekran judayam tor bo'lganda) */
+@media (max-width: 600px) {
+    .sport-top-header {
+        top: 25px;
+    }
+
+    .sport-main-title {
+        font-size: 2.6rem;
+    }
+
+    .sport-grid-item {
+        padding: 30px 20px;
+    }
+
+    .sport-item-name {
+        font-size: 1.2rem;
+    }
+
+    .sport-item-action-wrapper {
+        right: 20px;
+        gap: 15px;
+        /* Mobilda rasm va strelka zichlashadi */
+    }
+
+    .sport-image-popup-container {
+        width: 110px;
+        /* Telefon ekraniga rasm sig'ishi uchun kichik o'lcham */
+        height: 70px;
+        border-radius: 8px;
+    }
+
+    .sport-popup-arrow-icon {
+        transform: scale(0.85);
+        /* Strelka ham kichrayadi */
+    }
+}

@@ -1,0 +1,263 @@
+/* header.css */
+
+/* --- STANDART HOLAT (Sahifa eng tepasida turganda) --- */
+.main-header {
+    width: 100%;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    user-select: none;
+    max-width: 1500px;
+    margin: auto;
+
+    position: relative;
+    z-index: 9999;
+
+    transition: border-radius 0.6s ease, width 0.6s ease, box-shadow 0.6s ease;
+}
+
+/* --- SKROL BO'LGANDA TEPADAN TUSHIB, KUTIB, QAYTIB KETISHI --- */
+.main-header.scrolled {
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translate(-50%, -120%);
+    width: 98%;
+    max-width: 1400px;
+    border-radius: 16px;
+    /* Silliq, yumshoq burchaklar */
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+    /* 4 soniyalik sof CSS animatsiyasi (tushadi, 3s turadi, qaytadi) */
+    animation: slideInOut 4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* --- FAQAT SKROL BO'LGANDAGI YOZUVLARNI KATTALASHTIRISH --- */
+.main-header.scrolled .nav-item {
+    font-size: 15.5px !important;
+    /* Skrol bo'lganda yozuv sal kattaroq bo'ladi */
+    font-weight: 600 !important;
+    /* Yaqqol ko'rinishi uchun biroz qalinroq */
+}
+
+/* SOF CSS TAYMER ANIMATSIYASI */
+@keyframes slideInOut {
+    0% {
+        transform: translate(-50%, -120%);
+        opacity: 0;
+    }
+
+    15% {
+        transform: translate(-50%, 0);
+        /* Silliq tushdi */
+        opacity: 1;
+    }
+
+    85% {
+        transform: translate(-50%, 0);
+        /* 3 soniya ekranda turadi */
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -150%);
+        /* To'g'ri tepaga qaytib ketadi */
+        opacity: 0;
+    }
+}
+
+/* Sahifa ostidagi kontent (video) sakrab ketmasligi uchun joy qoplovchi */
+.header-placeholder {
+    height: 81px;
+    width: 100%;
+    background-color: transparent;
+}
+
+/* --- CHAP TARAFI (Logo va Menu) --- */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo-link {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.logo-link:hover {
+    background-color: rgb(204, 203, 203);
+    transition: all 0.3s ease;
+}
+
+.menu-button {
+    background: none;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #111111;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.2s ease;
+}
+
+.menu-button:hover {
+    background-color: rgb(204, 203, 203);
+    transition: all 0.3s ease;
+}
+
+/* --- O'RTA TARAFI (Navigatsiya) --- */
+.header-middle {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.nav-item {
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    color: black;
+    transition: color 0.4s ease, text-decoration-color 0.4s ease;
+}
+
+.nav-item:hover {
+    color: #000000;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    text-decoration-color: #A23B3B;
+}
+
+.nav-item.sale {
+    color: #A23B3B;
+}
+
+.nav-item.sale:hover {
+    color: #A23B3B;
+}
+
+/* --- O'NG TARAFI (Ikonalar) --- */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    color: #111111;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.2s ease;
+}
+
+.icon-button:hover {
+    background-color: rgb(204, 203, 203);
+    transition: all 0.3s ease;
+}
+
+
+/* ==========================================================================
+   MUKAMMAL RESPONSIVE DIZAYN (RESPONSIVE QISMI)
+   ========================================================================== */
+
+/* --- 1. PLANSHETLAR UCHUN --- */
+@media (max-width: 1200px) {
+    .header-middle {
+        gap: 14px;
+    }
+
+    .nav-item {
+        font-size: 13.5px;
+    }
+
+    .header-right {
+        gap: 16px;
+    }
+}
+
+/* --- 2. KICHIK PLANSHETLAR UCHUN --- */
+@media (max-width: 1050px) {
+    .header-middle {
+        display: none;
+    }
+
+    .menu-button {
+        display: flex;
+    }
+
+    .main-header {
+        padding: 12px 20px;
+    }
+}
+
+/* --- 3. MOBIL TELEFONLAR UCHUN (Smartfonlar) --- */
+@media (max-width: 600px) {
+    .main-header {
+        padding: 10px 12px;
+    }
+
+    .main-header.scrolled {
+        width: 94%;
+        top: 10px;
+        border-radius: 12px;
+        animation: slideInOutMobile 4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .header-placeholder {
+        height: 65px;
+    }
+
+    .header-right {
+        gap: 6px;
+    }
+
+    .header-left {
+        gap: 6px;
+    }
+
+    .header-right .icon-button svg,
+    .header-left .menu-button svg {
+        transform: scale(0.9);
+    }
+}
+
+/* Mobil telefon uchun silliq animatsiya o'lchami */
+@keyframes slideInOutMobile {
+    0% {
+        transform: translate(-50%, -120%);
+        opacity: 0;
+    }
+
+    15% {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+
+    85% {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -150%);
+        opacity: 0;
+    }
+}
